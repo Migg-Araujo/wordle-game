@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Tech Wordle</title>
+</head>
+<body>
+    <nav id="nav">
+        <button onclick="carregarConteudo('wordle1.html');">Word 1</button>
+        <button onclick="carregarConteudo('wordle2.html');">Word 2</button>
+        <button onclick="carregarConteudo('wordle3.html');">Word 3</button>
+        <button onclick="carregarConteudo('wordle4.html');">Word 4</button>
+        <button onclick="carregarConteudo('wordle5.html');">Word 5</button>
+    </nav>
+    <div id="customAlert" class="alert-box">
+        <h1 id="res"></h1>
+        <p id="msg"></p>
+        <button onclick="closeAlert()">RESTART</button>
+    </div>
+        <div class="words" id="words1">
+            <p>Words with 3 letters<br><br>CPU<br>RAM<br>API<br>LAN<br>URL<br>DNS<br>VPN<br>GUI<br>IDE<br>BIT<br>HEX</p>
+        </div>
+    <div class="game">    
+        <h1>Tech Wordle</h1>        
+    <div id="conteudo"></div>
+    </div>
+    <div class="words" id="words2">
+        <p>Words with 6 letters<br><br>SYSTEM<br>SOCKET<br>LAPTOP<br>BUFFER<br>CLIENT<br>PACKET<br>DEVICE<br>MODULE<br>SOCKET<br>SCRIPT<br>DOMAIN<br>
+        </p>
+    </div>
+</body>
+</html>
+<script src="js/script.js"></script>
