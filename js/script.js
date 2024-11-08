@@ -15,27 +15,27 @@
         location.reload();
       }
 
-        function carregarConteudo(arquivo) {
-            fetch(arquivo)
+        function gameInsert(game) {
+            fetch(game)
                 .then(response => {
-                    if (!response.ok) throw new Error("Erro ao carregar o conteúdo.");
+                    if (!response.ok) throw new Error("Error.");
                     return response.text();
                 })
                 .then(html => {
-                    const divConteudo = document.getElementById("conteudo");
-                    divConteudo.innerHTML = html;
+                    const divGame = document.getElementById("game");
+                    divGame.innerHTML = html;
         
-                    // Executar scripts dentro do conteúdo carregado
-                    const scripts = divConteudo.querySelectorAll("script");
+                    const scripts = divGame.querySelectorAll("script");
                     scripts.forEach(script => {
-                        const novoScript = document.createElement("script");
-                        novoScript.textContent = script.textContent;
-                        document.body.appendChild(novoScript);
+                        const newScript = document.createElement("script");
+                        newScript.textContent = script.textContent;
+                        document.body.appendChild(newScript);
                     });
                 })
                 .catch(error => {
-                    console.error("Erro:", error);
-                    document.getElementById("conteudo").innerHTML = "<p>Erro ao carregar o conteúdo.</p>";
+                    console.error("Error:", error);
+                    document.getElementById("game").innerHTML = "<p>Error.</p>";
                 });
+                
                 document.getElementById('nav').style.display = 'none';
         }

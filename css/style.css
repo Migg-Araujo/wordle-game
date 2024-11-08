@@ -8,19 +8,12 @@
         width: 100dvw;
         height: 100dvh;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: space-around;
         font-family: 'Nunito', 'sans-serif';
         background: linear-gradient(#221124, #13141c);
         color: white;
-    }
-    .game{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        height: 100dvh;
     }
 
     h1{
@@ -44,15 +37,6 @@
     .correct{background-color: #78BC61; animation: appears 1s ease-in;}
     .exists{background-color: #F7B538; animation: appears 1s ease-in;}
     .miss{background-color: #3c3f56; animation: appears 1s ease-in;}
-
-    @keyframes appears {
-        0%{
-            opacity: 0%;
-        }
-        100%{
-            opacity: 100%;
-        }
-    }
 
     .alert-box {
         display: none;
@@ -116,8 +100,12 @@
       nav button:hover{
         background-color: #3c3f56;
       }
-      .words{
-        font-size: 1.5rem;
-        text-align: center;
-        visibility: hidden;
-      }
+
+      @keyframes appears {
+        0%{
+            opacity: 0%;
+        }
+        100%{
+            opacity: 100%;
+        }
+    }

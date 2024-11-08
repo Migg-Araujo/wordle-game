@@ -1,5 +1,50 @@
 <table id="t">
     <script>
+        const words = [
+        "ace", "act", "add", "ado", "aft", "age", "ago", "aid", "aim", "air",
+        "ale", "all", "amp", "and", "ant", "any", "ape", "apt", "arc", "are",
+        "arm", "art", "ash", "ask", "asp", "ass", "ate", "awe", "axe", "bad",
+        "bag", "ban", "bar", "bat", "bay", "bed", "bee", "beg", "bet", "bib",
+        "big", "bin", "bit", "boa", "bog", "bon", "boo", "bow", "box", "boy",
+        "bra", "bud", "bug", "bum", "bun", "bus", "but", "buy", "bye", "cab",
+        "cad", "cam", "can", "cap", "car", "cat", "caw", "cod", "cog", "con",
+        "coo", "cop", "cot", "cow", "cox", "coy", "cry", "cub", "cue", "cup",
+        "cut", "dab", "dad", "dam", "dan", "dap", "day", "deb", "den", "dew",
+        "did", "die", "dig", "dim", "din", "dip", "doe", "dog", "don", "dot",
+        "dry", "dub", "dud", "due", "dug", "duh", "duo", "dye", "ear", "eat",
+        "ebb", "egg", "ego", "elf", "elm", "emu", "end", "era", "eve", "fab",
+        "fad", "fan", "far", "fat", "fax", "fed", "fee", "few", "fib", "fig",
+        "fin", "fit", "fix", "flu", "fly", "fog", "foe", "for", "fox", "fry",
+        "fun", "fur", "gab", "gad", "gag", "gal", "gap", "gas", "gel", "gem",
+        "get", "gig", "gin", "gob", "god", "got", "gum", "gun", "gut", "gym",
+        "gyp", "had", "ham", "has", "hat", "haw", "hay", "hem", "hen", "her",
+        "hex", "hey", "hip", "his", "hit", "hob", "hog", "hop", "hot", "how",
+        "hub", "hug", "huh", "hum", "hut", "ice", "icy", "igg", "ill", "imp",
+        "ink", "inn", "its", "ivy", "jam", "jar", "jaw", "jay", "jet", "jib",
+        "jig", "job", "joe", "jog", "jot", "joy", "jug", "jut", "ken", "key",
+        "kid", "kin", "kit", "lab", "lac", "lad", "lag", "lam", "lap", "law",
+        "lay", "lea", "led", "lee", "leg", "let", "lib", "lid", "lie", "lip",
+        "lit", "lob", "log", "lot", "low", "mad", "man", "map", "mat", "may",
+        "men", "met", "mid", "mix", "mob", "moo", "mop", "mud", "mug", "mop",
+        "nag", "nap", "net", "new", "nil", "nip", "nod", "non", "nor", "not",
+        "now", "nut", "oaf", "oak", "oar", "odd", "ode", "off", "oft", "oil",
+        "old", "one", "opt", "orb", "ore", "our", "out", "owe", "owl", "own",
+        "pad", "pal", "pam", "pan", "pap", "par", "pat", "paw", "pay", "pea",
+        "peg", "pen", "pep", "per", "pet", "pie", "pig", "pin", "pit", "pop",
+        "pot", "pro", "pup", "put", "rag", "ram", "ran", "rap", "rat", "raw",
+        "ray", "red", "rev", "rib", "rid", "rig", "rim", "rip", "rob", "rod",
+        "row", "rub", "rug", "rum", "run", "sad", "sag", "sap", "sat", "saw",
+        "say", "sea", "see", "set", "sew", "she", "shy", "sip", "sit", "six",
+        "ski", "sky", "sly", "son", "sow", "soy", "sub", "sue", "sum", "sun",
+        "tab", "tag", "tan", "tap", "tar", "tat", "tax", "tea", "ted", "tee",
+        "ten", "the", "tie", "tin", "tip", "toe", "ton", "top", "toy", "try",
+        "tub", "tug", "two", "urn", "use", "van", "vat", "vet", "vex", "via",
+        "vie", "vow", "wag", "war", "was", "wax", "way", "web", "wed", "wet",
+        "who", "why", "wig", "win", "wit", "wok", "won", "wow", "wry", "yak",
+        "yam", "yap", "yaw", "yep", "yet", "yew", "you", "zap", "zig", "zip",
+        "zoo"
+        ];
+        
         const createTable = ()=>{
             const elem = []
             const t = document.getElementById('t')
@@ -8,7 +53,7 @@
                 t.appendChild(r)
                 const re = []
                 elem.push(re)
-                for (let x = 0; x < 3; x++){
+                for (let x = 0; x < 6; x++){
                     const c = document.createElement('td')
                     c.classList.add('empty', 'cell')
                     r.appendChild(c)
@@ -18,11 +63,11 @@
             return elem
         }
 
-        const randomWorld = () => {return 'USB'}
+        const randomWord = () => {return 'SCREEN'}
         let attempt = 0
 
-        const tryWorld = (w) =>{
-            for(let i = 0; i < 3; i++){
+        const tryWord = (w) =>{
+            for(let i = 0; i < 6; i++){
                 let style = 'miss'
                 if(w[i] == word[i]) style = 'correct'
                 else if (word.indexOf(w[i]) >= 0) style = 'exists'
@@ -38,28 +83,23 @@
             showAlert(msg, res)
         }
 
-        const elem = createTable(), word = randomWorld()
+        const elem = createTable(), word = randomWord()
         let current = ''
         document.addEventListener('keydown', (e) => {
             const c = e.keyCode
             const l = current.length
-            if (c == 13 && l == 3){
-                const res = tryWorld(current)
-                if (res) gameOver(`The word was ${word}!\n\nEng: Universal serial parallel circuit, it is a type of plug and play connection that allows you to connect peripherals without having to turn off your computer.\n\nBr: Circuito paralelo universal em série, é um tipo de conexão para ligar e usar (Plug and Play) que permite a conexão de periféricos sem a necessidade de desligar o computador.`, `${res}`)
+            if (c == 13 && l == 6){
+                const res = tryWord(current)
+                if (res) gameOver(`The word was ${word}!`, `${res}`)
                 current = ''
             }else if (c == 8 && l > 0){
                 current = current.substr(0, l-1)
                 elem[attempt][l-1].innerText = ''
-            }else if (c >= 65 && c <=90 && l < 3){
+            }else if (c >= 65 && c <=90 && l < 6){
                 const ch = String.fromCharCode(c)
                 current = current + ch
                 elem[attempt][l].innerText = ch
             }
         })
-
-        const words1 = document.getElementById('words1');
-        words1.style.visibility = 'visible';
-        const words2 = document.getElementById('words2');
-        words2.style.visibility = 'visible';
     </script>
 </table>
